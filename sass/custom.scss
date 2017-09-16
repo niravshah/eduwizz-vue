@@ -1,0 +1,18 @@
+$dark-primary-color: #303F9F;
+$default-primary-color: #3F51B5;
+$light-primary-color: #C5CAE9;
+$text-primary-color: #FFFFFF;
+$accent-color: #FF4081;
+$primary-text-color: #212121;
+$secondary-text-color: #757575;
+$divider-color: #BDBDBD;
+
+#login-page {
+  min-height: 100%;
+  background-color: $dark-primary-color;
+}
+
+#login-page .banner img {
+  width: 420px;
+  padding: 120px 0px 60px 0px;
+}

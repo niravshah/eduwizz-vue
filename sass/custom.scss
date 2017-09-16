@@ -16,3 +16,19 @@ $divider-color: #BDBDBD;
   width: 420px;
   padding: 120px 0px 60px 0px;
 }
+
+.form-login h2.form-login-heading {
+  background: $accent-color;
+}
+
+.btn-theme {
+  background: $accent-color;
+}
+
+.btn-theme:hover {
+  background: $default-primary-color;
+}
+
+.modal-header {
+  background: $accent-color;
+}

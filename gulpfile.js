@@ -25,6 +25,7 @@ gulp.task('sass', function () {
         .pipe(sass().on('error', function (error) {
             gutil.log(gutil.colors.red(error))
         }))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('public/dist/css'));
 });
 

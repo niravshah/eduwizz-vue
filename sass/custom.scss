@@ -32,3 +32,22 @@ $divider-color: #BDBDBD;
 .modal-header {
   background: $accent-color;
 }
+
+.black-bg {
+  background: $default-primary-color;
+  border-bottom: 1px solid $dark-primary-color;
+}
+
+#sidebar {
+  background: $dark-primary-color;
+}
+
+.sidebar-toggle-box {
+  color: $accent-color;
+}
+
+ul.top-menu > li > .logout {
+  color: #f2f2f2;
+  border: 1px solid $accent-color !important;
+  background: $accent-color;
+}

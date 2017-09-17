@@ -21,6 +21,7 @@
         <a href="index.ejs" class="logo"><b>EDUWIZZ</b></a>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
+                <li><a class="home" href="#/">Home</a></li>
                 <li><a class="logout" href="login.html">Logout</a></li>
             </ul>
         </div>
@@ -47,6 +48,10 @@
         <section class="wrapper">
             <router-view></router-view>
             <%- include vues/home.ejs %>
+            <%- include vues/math.ejs %>
+            <%- include vues/chemistry.ejs %>
+            <%- include vues/biology.ejs %>
+            <%- include vues/physics.ejs %>
         </section>
     </section>
 </section>
@@ -59,7 +64,13 @@
 <script type="application/javascript">
     Vue.use(VueRouter)
     var home = Vue.component('home', {template: '#homeVue'});
-    var routes = [{path: '/', component: home}]
+    var math = Vue.component('home', {template: '#mathVue'});
+    var biology = Vue.component('home', {template: '#biologyVue'});
+    var chemistry = Vue.component('home', {template: '#chemistryVue'});
+    var physics = Vue.component('home', {template: '#physicsVue'});
+    var routes = [{path: '/', component: home}, {path: '/maths', component: math},
+        {path: '/biology', component: biology}, {path: '/chemistry', component: chemistry},
+        {path: '/physics', component: physics}]
     var router = new VueRouter({routes: routes})
     new Vue({router: router}).$mount('#vueApp')
 </script>

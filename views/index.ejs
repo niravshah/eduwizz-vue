@@ -1,48 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
     <title>Eduwizz</title>
-
     <%- include partials/top-scripts.ejs %>
     <%- include partials/styles.ejs %>
-
 </head>
 
 <body>
-
-<section id="container">
-    <!--header start-->
+<section id="vueApp" class="main-container">
     <header class="header black-bg">
         <div class="sidebar-toggle-box">
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
-        <!--logo start-->
         <a href="index.ejs" class="logo"><b>EDUWIZZ</b></a>
-        <!--logo end-->
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
                 <li><a class="logout" href="login.html">Logout</a></li>
             </ul>
         </div>
     </header>
-    <!--header end-->
-
-    <!--sidebar start-->
     <aside>
         <div id="sidebar" class="nav-collapse ">
-            <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
-
-                <p class="centered"><a href="profile.html"><img src="/img/owl2_128_128.png" class="img-circle"
-                                                                width="60"></a></p>
+                <p class="centered">
+                    <a href="profile.html">
+                        <img src="/img/owl2_128_128.png" class="img-circle" width="60">
+                    </a>
+                </p>
                 <h5 class="centered">Marcel Newman</h5>
-
                 <li class="mt">
                     <a class="active" href="index.ejs">
                         <i class="fa fa-dashboard"></i>
@@ -50,61 +41,28 @@
                     </a>
                 </li>
             </ul>
-            <!-- sidebar menu end-->
         </div>
     </aside>
-    <!--sidebar end-->
-
-    <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
             <router-view></router-view>
             <%- include vues/home.ejs %>
         </section>
     </section>
-    <!--main content end-->
 </section>
 
 <%- include partials/scripts.ejs %>
-
-<script type="application/javascript">
-    $(document).ready(function () {
-        $("#date-popover").popover({html: true, trigger: "manual"});
-        $("#date-popover").hide();
-        $("#date-popover").click(function (e) {
-            $(this).hide();
-        });
-
-    });
-
-
-    function myNavFunction(id) {
-        $("#date-popover").hide();
-        var nav = $("#" + id).data("navigation");
-        var to = $("#" + id).data("to");
-        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }
-</script>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
 <script type="application/javascript">
-
     Vue.use(VueRouter)
-
     var home = Vue.component('home', {template: '#homeVue'});
-
     var routes = [{path: '/', component: home}]
-
     var router = new VueRouter({routes: routes})
-
-    var App = new Vue({
-        router: router
-    }).$mount('#main-content')
-
+    new Vue({router: router}).$mount('#vueApp')
 </script>
-
 
 </body>
 </html>

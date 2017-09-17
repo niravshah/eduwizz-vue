@@ -17,6 +17,12 @@ $divider-color: #BDBDBD;
   padding: 120px 0px 60px 0px;
 }
 
+@media only screen and (max-width: 768px) {
+  #login-page .banner img {
+    width: 320px;
+  }
+}
+
 .form-login h2.form-login-heading {
   background: $accent-color;
 }
@@ -66,6 +72,6 @@ ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:fo
 
 }
 
-.darkblue-panel h5{
+.darkblue-panel h5 {
   color: $primary-text-color;
 }

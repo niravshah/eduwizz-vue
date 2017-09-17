@@ -51,3 +51,21 @@ ul.top-menu > li > .logout {
   border: 1px solid $accent-color !important;
   background: $accent-color;
 }
+
+ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
+  background: $accent-color;
+}
+
+.site-footer {
+  background: $light-primary-color;
+  color: $primary-text-color;
+}
+
+.darkblue-panel {
+  background: #ffffff;
+
+}
+
+.darkblue-panel h5{
+  color: $primary-text-color;
+}

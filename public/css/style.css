@@ -1317,7 +1317,7 @@ PANELS CONFIGURATIONS
 
 /* Instagram Panel*/
 .instagram-panel {
-    background: url(../img/instagram.jpg) no-repeat center top;
+    background: url(../img/bg_white.jpg) no-repeat center top;
     text-align: center;
     background-position: center center;
 }

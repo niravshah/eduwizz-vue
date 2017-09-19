@@ -14,64 +14,68 @@
 
 <body>
 <section id="vueApp" class="main-container">
-    <header class="header black-bg">
-        <div class="sidebar-toggle-box">
-            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-        </div>
-        <a href="index.ejs" class="logo"><b>EDUWIZZ</b></a>
-        <div class="top-menu">
-            <ul class="nav pull-right top-menu">
-                <li><a class="home" href="#/">Home</a></li>
-                <li><a class="logout" href="login.html">Logout</a></li>
-            </ul>
-        </div>
-    </header>
-    <aside>
-        <div id="sidebar" class="nav-collapse ">
-            <ul class="sidebar-menu" id="nav-accordion">
-                <p class="centered">
-                    <a href="profile.html">
-                        <img src="/img/owl2_128_128.png" class="img-circle" width="60">
-                    </a>
-                </p>
-                <h5 class="centered">Marcel Newman</h5>
-                <li class="mt">
-                    <a class="active" href="index.ejs">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </aside>
-    <section id="main-content">
-        <section class="wrapper">
-            <router-view></router-view>
-            <%- include vues/home.ejs %>
-            <%- include vues/math.ejs %>
-            <%- include vues/chemistry.ejs %>
-            <%- include vues/biology.ejs %>
-            <%- include vues/physics.ejs %>
-        </section>
-    </section>
+    <router-view></router-view>
+    <%- include vues/home.ejs %>
+    <%- include vues/login.ejs %>
+    <%- include vues/dashboard.ejs %>
+    <%- include vues/math.ejs %>
+    <%- include vues/chemistry.ejs %>
+    <%- include vues/biology.ejs %>
+    <%- include vues/physics.ejs %>
+
 </section>
 
 <%- include partials/scripts.ejs %>
 
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="/js/vue.min.js"></script>
+<script src="/js/vue-router.js"></script>
+
+<script src="/dist/js/plugins/jwt-plugin.js"></script>
+<script src="/dist/js/plugins/s3-plugin.js"></script>
 
 <script type="application/javascript">
     Vue.use(VueRouter)
-    var home = Vue.component('home', {template: '#homeVue'});
-    var math = Vue.component('home', {template: '#mathVue'});
-    var biology = Vue.component('home', {template: '#biologyVue'});
-    var chemistry = Vue.component('home', {template: '#chemistryVue'});
-    var physics = Vue.component('home', {template: '#physicsVue'});
-    var routes = [{path: '/', component: home}, {path: '/maths', component: math},
-        {path: '/biology', component: biology}, {path: '/chemistry', component: chemistry},
-        {path: '/physics', component: physics}]
-    var router = new VueRouter({routes: routes})
+    Vue.use(JwtPlugin);
+    Vue.use(S3Plugin);
+
+    var home = Vue.component('home', {template: '#homeVue'})
+    var login = Vue.component('login', {template: '#loginVue'})
+
+    var dashboard = Vue.component('dashboard', {template: '#dashboardVue'});
+    var math = Vue.component('math', {template: '#mathVue'});
+    var biology = Vue.component('biology', {template: '#biologyVue'});
+    var chemistry = Vue.component('chemistry', {template: '#chemistryVue'});
+    var physics = Vue.component('physics', {template: '#physicsVue'});
+    var routes = [
+        {
+            path: '/login',
+            component: login,
+            meta: {auth: false}
+        },
+        {
+            path: '/',
+            component: home,
+            meta: {auth: true},
+            children: [
+                {path: '', component: dashboard, meta: {auth: false}},
+                {path: '/maths', component: math, meta: {auth: true}},
+                {path: '/biology', component: biology, meta: {auth: true}},
+                {path: '/chemistry', component: chemistry, meta: {auth: true}},
+                {path: '/physics', component: physics, meta: {auth: true}}
+            ]
+        }];
+
+    var router = new VueRouter({routes: routes});
+
+    router.beforeEach(function (to, from, next) {
+        console.log("Auth Guard Called!");
+
+        if (to.meta.auth && !Vue.isLoggedIn()) {
+            next('/login')
+        } else {
+            next()
+        }
+    })
     new Vue({router: router}).$mount('#vueApp')
 </script>
 

@@ -1,79 +1,39 @@
 <script type="text/x-template" id="homeVue">
-    <div class="row">
-        <div class="col-lg-9 main-chart">
-            <div class="row mt">
-                <div class="col-md-4 col-sm-4 mb">
-                    <a href="#/maths">
-                        <div class="darkblue-panel pn">
-                            <div class="darkblue-header">
-                                <h5>MATHS</h5>
-                            </div>
-                            <div class="mt mb text-center">
-                                <img src="/img/maths.png">
-                            </div>
-                            <footer>
-                                <div class="centered">
-                                    <h5><i class="fa fa-file-text-o"></i> 10 Papers</h5>
-                                </div>
-                            </footer>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 mb">
-                    <a href="#/physics">
-                        <div class="darkblue-panel pn">
-                            <div class="darkblue-header">
-                                <h5>PHYSICS</h5>
-                            </div>
-                            <div class="mt mb text-center">
-                                <img src="/img/physics.png">
-                            </div>
-                            <footer>
-                                <div class="centered">
-                                    <h5><i class="fa fa-file-text-o"></i> 14 Papers</h5>
-                                </div>
-                            </footer>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-4 mb">
-                    <a href="#/biology">
-                        <div class="darkblue-panel pn">
-                            <div class="darkblue-header">
-                                <h5>BIOLOGY</h5>
-                            </div>
-                            <div class="mt mb text-center">
-                                <img src="/img/biology.png">
-                            </div>
-                            <footer>
-                                <div class="centered">
-                                    <h5><i class="fa fa-file-text-o"></i> 16 Papers</h5>
-                                </div>
-                            </footer>
-                        </div>
-                    </a>
-                </div>
-
+    <div id="nns234">
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-4 mb">
-                    <a href="#/chemistry">
-                        <div class="darkblue-panel pn">
-                            <div class="darkblue-header">
-                                <h5>CHEMISTRY</h5>
-                            </div>
-                            <div class="mt mb text-center">
-                                <img src="/img/chemistry.png">
-                            </div>
-                            <footer>
-                                <div class="centered">
-                                    <h5><i class="fa fa-file-text-o"></i> 12 Papers</h5>
-                                </div>
-                            </footer>
-                        </div>
-                    </a>
-                </div>
+            <a href="home.ejs" class="logo"><b>EDUWIZZ</b></a>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li><a class="home" href="#/">Home</a></li>
+                    <li><a class="logout" href="login.html">Logout</a></li>
+                </ul>
             </div>
-        </div>
+        </header>
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered">
+                        <a href="profile.html">
+                            <img src="/img/owl2_128_128.png" class="img-circle" width="60">
+                        </a>
+                    </p>
+                    <h5 class="centered">Marcel Newman</h5>
+                    <li class="mt">
+                        <a class="active" href="home.ejs">
+                            <i class="fa fa-dashboard"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <section id="main-content">
+            <section class="wrapper">
+                <router-view></router-view>
+            </section>
+        </section>
     </div>
 </script>
